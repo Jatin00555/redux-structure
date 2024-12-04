@@ -1,7 +1,18 @@
-import logo from './logo.svg';
-import './App.css';
+import logo from "./logo.svg";
+import "./App.css";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
+import { login } from "./actions/index.ts";
 
 function App() {
+  const dispatch = useDispatch();
+  const loginData = useSelector((state) => state.authReducer.login);
+  useEffect(() => {
+    dispatch(login.request({}));
+  }, []);
+
+  console.log(loginData, "login");
+
   return (
     <div className="App">
       <header className="App-header">
